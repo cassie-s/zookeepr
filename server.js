@@ -4,6 +4,7 @@ const { animals } = require('./data/animals');
 const express = require('express');
 const PORT = process.env.PORT || 3001;
 const app = express();
+app.use(express.static('public'));
 // parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
@@ -96,6 +97,22 @@ function filterByQuery(query, animalsArray) {
       }
   });
 
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+  });
+
+  app.get('/animals', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/animals.html'));
+  });
+
+  app.get('/zookeepers', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/zookeepers.html'));
+  });
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+  });
+
   app.post('/api/animals', (req, res) => {
       // set id based on what the next index of the array will be
   req.body.id = animals.length.toString();
@@ -110,6 +127,6 @@ function filterByQuery(query, animalsArray) {
 });
 
   app.listen(PORT, () => {
-    console.log(`API server now on port ${PORT}!`);
+    console.log(`API server now live at http://localhost:${PORT}`);
   });
 
