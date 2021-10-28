@@ -126,6 +126,19 @@
         "hungry"
       ],
       "id": "12"
+    },
+    {
+      "name": "Darlene",
+      "id": "jhgdja3ng2"
+    },
+    {
+      "name": "cassie",
+      "species": "dog",
+      "diet": "herbivore",
+      "personalityTraits": [
+        "hungry"
+      ],
+      "id": "14"
     }
   ]
 }
